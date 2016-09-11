@@ -104,11 +104,11 @@ public class Arrays {
      */
     public static String findOptimalOrderedArray(int value) {
         startTime = System.nanoTime();
-        int[] newOrderedArray = new int[orderedArray.length + 1];  //создаем массив размером на 1 больше чем commonArray
+        int[] newOrderedArray = new int[orderedArray.length + 1];  //создаем массив размером на 1 больше чем orderedArray
         for (int i = 0; i < orderedArray.length; i++) {
             newOrderedArray[i] = orderedArray[i];
         }
-        newOrderedArray[newOrderedArray.length - 1] = value + 1;
+        newOrderedArray[newOrderedArray.length - 1] = value + 1;  //последним элементов(барьером) нового массива устанавливаем ключ поиска+1
         int i = 0;
         while (value > newOrderedArray[i]) {
             i++;
