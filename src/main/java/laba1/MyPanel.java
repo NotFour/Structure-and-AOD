@@ -149,7 +149,7 @@ public class MyPanel extends JPanel {
         label2.setText("Неупорядоченный массив");
         label3.setText("Упорядоченный массив");
         label4.setText("Неоптимальный поиск");
-        label5.setText("Поиск как в упорядоченном");
+        label5.setText("Поиск как в неупорядоченном");
         label6.setText("Ключ");
         label7.setText("Время");
         label8.setText("Индекс");
@@ -157,7 +157,7 @@ public class MyPanel extends JPanel {
         label10.setText("Время");
         label11.setText("Индекс");
         label12.setText("Оптимальный поиск");
-        label13.setText("Поиск как у упорядоченном");
+        label13.setText("Поиск как в упорядоченном");
         label14.setText("Время");
         label15.setText("Индекс");
         label16.setText("Время");
