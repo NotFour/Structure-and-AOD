@@ -3,22 +3,27 @@ package laba1;
 import java.util.Random;
 
 public class Arrays {
-    /**
-     * время начала в нс
-     */
-    static long startTime;
+
+    public static class Structure{
+        public static long time;
+        public static int index;
+        public Structure(long time, int index){
+            Structure.time=time/1000;
+            Structure.index=index;
+        }
+    }
 
     /**
      * обычный массив
      */
     public static int[] commonArray;
 
+
     /**
      * упорядоченный массив
      */
     public static int[] orderedArray;
 
-    private static Random random = new Random();
 
     /**
      * создание обычного массива
@@ -27,7 +32,7 @@ public class Arrays {
      * @param allNumbers числа, из которых берутся рандомные
      */
     public static void createCommonArray(int size, int allNumbers) {
-
+Random random = new Random();
         commonArray = new int[size];
         for (int i = 0; i < size; i++) {
             commonArray[i] = random.nextInt(allNumbers);
@@ -41,6 +46,7 @@ public class Arrays {
      * @param allNumbers числа, из которых берутся рандомные
      */
     public static void createOrderedArray(int size, int allNumbers) {
+        Random random = new Random();
         orderedArray = new int[size];
         orderedArray[0] = random.nextInt(allNumbers);
         for (int i = 1; i < size; i++) {
@@ -49,49 +55,49 @@ public class Arrays {
     }
 
     /**
-     * Неоптимальный поиск в обычном/упорядоченном массивах
+     * Неоптимальный поиск в обычном массивах
      *
-     * @param array входной массив(обычный/упорядоченный)
      * @param value ключ поиска
      * @return найдено или не найдено, индекс если найдено, время поиска
      */
-    public static String findNotOptimalArray(int[] array, int value) {
-        startTime = System.nanoTime();
+    public static Structure findNotOptimalArray(int value) {
+
+        long startTime = System.nanoTime();
         int i;
-        for (i = 0; i < array.length; i++) {
-            if (value == array[i]) {
+        for (i = 0; i < commonArray.length; i++) {
+            if (value == commonArray[i]) {
                 break;
             }
         }
-        if (i == array.length) {
-            return "Не найдено, время " + (System.nanoTime() - startTime) / 1000 + "мкс";
+        if (i == commonArray.length) {
+            return new Structure(System.nanoTime()-startTime,-1);
         } else {
-            return "Найдено, индекс " + i + ", время " + (System.nanoTime() - startTime) / 1000 + "мкс";
+            return new Structure(System.nanoTime()-startTime,i);
         }
     }
 
     /**
-     * Оптимальный поиск в обычном(неупорядоченном) массиве
-     *
+     * Оптимальный поиск в обычном/упорядоченном массиве массиве
+     * @param array входной массив(обычный/упорядоченный)
      * @param value ключ поиска
      * @return найдено или не найдено, индекс если найдено, время поиска
      */
-    public static String findOptimalArray(int value) {
-        startTime = System.nanoTime();
-        int[] newCommonArray = new int[commonArray.length + 1];  //создаем массив размером на 1 больше чем commonArray
-        for (int i = 0; i < commonArray.length; i++) {
-            newCommonArray[i] = commonArray[i];
+    public static Structure findOptimalArray(int[] array,int value) {
+
+        int[] newArray = new int[array.length + 1];  //создаем массив размером на 1 больше чем commonArray
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[i];
         }
-        newCommonArray[newCommonArray.length - 1] = value;  //последним элементов(барьером) нового массива устанавливаем ключ поиска
+        newArray[newArray.length - 1] = value;  //последним элементов(барьером) нового массива устанавливаем ключ поиска
         int i = 0;
-        while (value != newCommonArray[i]) {
+        long startTime = System.nanoTime();
+        while (value != newArray[i]) {
             i++;
         }
-        if (i < newCommonArray.length - 1) {
-            return "Найдено, индекс " + i + ", время " + (System.nanoTime() - startTime) / 1000 + "мкс";
-
+        if (i < newArray.length - 1) {
+            return new Structure(System.nanoTime()-startTime,i);
         } else {
-            return "Не найдено, время " + (System.nanoTime() - startTime) / 1000 + "мкс";
+            return new Structure(System.nanoTime()-startTime,-1);
         }
 
     }
@@ -102,22 +108,22 @@ public class Arrays {
      * @param value ключ поиска
      * @return найдено или не найдено, индекс если найдено, время поиска
      */
-    public static String findOptimalOrderedArray(int value) {
-        startTime = System.nanoTime();
+    public static Structure findOptimalOrderedArray(int value) {
+
         int[] newOrderedArray = new int[orderedArray.length + 1];  //создаем массив размером на 1 больше чем orderedArray
         for (int i = 0; i < orderedArray.length; i++) {
             newOrderedArray[i] = orderedArray[i];
         }
         newOrderedArray[newOrderedArray.length - 1] = value + 1;  //последним элементов(барьером) нового массива устанавливаем ключ поиска+1
         int i = 0;
+        long startTime = System.nanoTime();
         while (value > newOrderedArray[i]) {
             i++;
         }
         if (value == newOrderedArray[i]) {
-            return "Найдено, индекс " + i + ", время " + (System.nanoTime() - startTime) / 1000 + "мкс";
-
+            return new Structure(System.nanoTime()-startTime,i);
         } else {
-            return "Не найдено, время " + (System.nanoTime() - startTime) / 1000 + "мкс";
+            return new Structure(System.nanoTime()-startTime,-1);
         }
 
     }
