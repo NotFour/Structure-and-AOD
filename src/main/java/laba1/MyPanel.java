@@ -60,10 +60,8 @@ public class MyPanel extends JPanel {
         label15 = new JLabel();
         label16 = new JLabel();
         label17 = new JLabel();
-
         spinner1 = new JSpinner();
         spinner2 = new JSpinner();
-
         field1 = new JTextField();
         field2 = new JTextField();
         field3 = new JTextField();
@@ -72,7 +70,6 @@ public class MyPanel extends JPanel {
         field6 = new JTextField();
         field7 = new JTextField();
         field8 = new JTextField();
-
 
         label1.setBounds(0,0,950,50);
         label2.setBounds(0,50,475,50);
@@ -144,7 +141,6 @@ public class MyPanel extends JPanel {
         label12.setHorizontalAlignment(SwingConstants.CENTER);
         label13.setHorizontalAlignment(SwingConstants.CENTER);
 
-
         label1.setText("Последовательный поиск");
         label2.setText("Неупорядоченный массив");
         label3.setText("Упорядоченный массив");
@@ -200,6 +196,15 @@ public class MyPanel extends JPanel {
         field6.setFont(font);
         field7.setFont(font);
         field8.setFont(font);
+
+        field1.setEditable(false);
+        field2.setEditable(false);
+        field3.setEditable(false);
+        field4.setEditable(false);
+        field5.setEditable(false);
+        field6.setEditable(false);
+        field7.setEditable(false);
+        field8.setEditable(false);
 
         button1.addActionListener(new ButtonListener(this));
         button2.addActionListener(new ButtonListener(this));
