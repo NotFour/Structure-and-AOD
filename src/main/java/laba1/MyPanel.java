@@ -163,8 +163,8 @@ public class MyPanel extends JPanel {
         button3.setText("ВЫХОД");
 
         Random random = new Random();
-        spinner1.setValue(random.nextInt(50000));
-        spinner2.setValue(random.nextInt(50000));
+        spinner1.setValue(random.nextInt(1000000));
+        spinner2.setValue(random.nextInt(1000000));
 
         label1.setFont(font);
         label2.setFont(font);

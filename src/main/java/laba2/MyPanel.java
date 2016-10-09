@@ -1,3 +1,4 @@
+
 package laba2;
 
 import javax.swing.*;
@@ -159,3 +160,4 @@ public class MyPanel extends JPanel {
         add(field6);
     }
 }
+

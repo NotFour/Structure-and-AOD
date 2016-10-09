@@ -1,7 +1,8 @@
 package laba2;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 
 public class ButtonListener implements ActionListener {
     MyPanel mp;
@@ -15,15 +16,16 @@ public class ButtonListener implements ActionListener {
             System.exit(0);
         }
         if(e.getSource().equals(mp.button1)){
-            Arrays.binaryNotOptimal(Integer.parseInt(mp.spinner1.getModel().getValue().toString()));
-            mp.field1.setText(String.valueOf(Arrays.Structure.time));
-            mp.field2.setText(String.valueOf(Arrays.Structure.index));
-            Arrays.binaryOptimal(Integer.parseInt(mp.spinner1.getModel().getValue().toString()));
-            mp.field3.setText(String.valueOf(Arrays.Structure.time));
-            mp.field4.setText(String.valueOf(Arrays.Structure.index));
-            Arrays.findOptimalArray(Arrays.orderedArray,Integer.parseInt(mp.spinner1.getModel().getValue().toString()));
-            mp.field5.setText(String.valueOf(Arrays.Structure.time));
-            mp.field6.setText(String.valueOf(Arrays.Structure.index));
+            Arrays.Structure result;
+            result = Arrays.binaryNotOptimal(Integer.parseInt(mp.spinner1.getModel().getValue().toString()));
+            mp.field1.setText(String.valueOf(result.time));
+            mp.field2.setText(String.valueOf(result.index));
+            result = Arrays.binaryOptimal(Integer.parseInt(mp.spinner1.getModel().getValue().toString()));
+            mp.field3.setText(String.valueOf(result.time));
+            mp.field4.setText(String.valueOf(result.index));
+            result = Arrays.findOptimalOrderedArray(Integer.parseInt(mp.spinner1.getModel().getValue().toString()));
+            mp.field5.setText(String.valueOf(result.time));
+            mp.field6.setText(String.valueOf(result.index));
 
 
         }

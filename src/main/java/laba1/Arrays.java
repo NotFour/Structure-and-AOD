@@ -5,11 +5,11 @@ import java.util.Random;
 public class Arrays {
 
     public static class Structure{
-        public static long time;
-        public static int index;
+        public long time;
+        public int index;
         public Structure(long time, int index){
-            Structure.time=time/1000;
-            Structure.index=index;
+            this.time=time/10;
+            this.index=index;
         }
     }
 
@@ -50,7 +50,7 @@ Random random = new Random();
         orderedArray = new int[size];
         orderedArray[0] = random.nextInt(allNumbers);
         for (int i = 1; i < size; i++) {
-            orderedArray[i] = random.nextInt(allNumbers) + orderedArray[i - 1];
+            orderedArray[i] = random.nextInt(allNumbers) + orderedArray[i - 1]+1;
         }
     }
 
@@ -62,8 +62,8 @@ Random random = new Random();
      */
     public static Structure findNotOptimalArray(int value) {
 
-        long startTime = System.nanoTime();
         int i;
+        long startTime = System.nanoTime();
         for (i = 0; i < commonArray.length; i++) {
             if (value == commonArray[i]) {
                 break;
@@ -111,7 +111,7 @@ Random random = new Random();
     public static Structure findOptimalOrderedArray(int value) {
 
         int[] newOrderedArray = new int[orderedArray.length + 1];  //создаем массив размером на 1 больше чем orderedArray
-        for (int i = 0; i < orderedArray.length; i++) {
+        for (int i = 0; i < (newOrderedArray.length-1); i++) {
             newOrderedArray[i] = orderedArray[i];
         }
         newOrderedArray[newOrderedArray.length - 1] = value + 1;  //последним элементов(барьером) нового массива устанавливаем ключ поиска+1

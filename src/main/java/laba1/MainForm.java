@@ -9,8 +9,7 @@ public class MainForm {
         frame.setSize(950,607);
         frame.add(panel);
         frame.setVisible(true);
-        Arrays.createCommonArray(10000000,50000);
+        Arrays.createCommonArray(10000000,10000000);
         Arrays.createOrderedArray(10000000,5);
-
     }
 }

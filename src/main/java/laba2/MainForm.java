@@ -10,7 +10,9 @@ public class MainForm {
         frame.add(panel);
         frame.setVisible(true);
         Arrays.createOrderedArray(1000000,5);
+
     }
 
 
 }
+

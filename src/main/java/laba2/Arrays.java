@@ -9,25 +9,21 @@ public class Arrays extends laba1.Arrays {
         while (right >= left) {
             i = (left + right) / 2;
             if (value == orderedArray[i]) {
-                break;
+                return new Structure(System.nanoTime() - startTime, i);
             } else if (value < orderedArray[i]) {
                 right = i - 1;
             } else {
                 left = i + 1;
             }
         }
-        if (right < left) {
-            return new Structure(System.nanoTime() - startTime, -1);
-        } else {
-            return new Structure(System.nanoTime() - startTime, i);
-        }
+        return new Structure(System.nanoTime() - startTime, -1);
     }
 
     /*public static Structure binaryOptimal(int value) {
-        long startTime = System.nanoTime();
         int left = 0;
         int right = orderedArray.length - 1;
         int i = 0;
+        long startTime = System.nanoTime();
         while (right > left) {
             i = (left + right) / 2;
             if (value <= orderedArray[i]) {
@@ -36,13 +32,16 @@ public class Arrays extends laba1.Arrays {
                 left = i + 1;
             }
         }
-        if (value == orderedArray[i]) {
+        if (orderedArray[i] == value) {
             return new Structure(System.nanoTime() - startTime, i);
         } else {
             return new Structure(System.nanoTime() - startTime, -1);
         }
     }*/
 
+    /**
+     * Оптимальный бинарный с рекурсией.
+     * */
     public static Structure binaryOptimal(int val) {
         long timeStart=System.nanoTime();
         return new Structure(System.nanoTime()-timeStart,binaryOptimal(val, 0, orderedArray.length-1));
