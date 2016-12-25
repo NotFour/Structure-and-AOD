@@ -1,0 +1,13 @@
+#include <iostream>
+#include "java_pack_NativeCallsClass.h"
+
+
+    JNIEXPORT int JNICALL Java_pack_NativeCallsClass_printOne(JNIEnv *env, jclass myclass)
+    {
+        return 5;
+    }
+
+    JNIEXPORT int JNICALL Java_pack_NativeCallsClass_printTwo(JNIEnv *env, jclass myclass)
+    {
+     return 4;
+    }

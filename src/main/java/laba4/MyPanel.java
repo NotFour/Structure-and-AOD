@@ -2,24 +2,30 @@ package laba4;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class MyPanel extends JPanel{
-    JTextField field1;
+    Map treeMap;
+    JTextArea field1;
     JTextField field2;
     JLabel label;
     JButton button1;
     JButton button2;
     JButton button3;
+    Metod metod;
 
     public MyPanel(){
         setLayout(null);
         Font font = new Font("Verdana", Font.BOLD, 17);
-        field1 = new JTextField();
-        field2 = new JTextField();
-        label = new JLabel("Слова найдено");
+        field1 = new JTextArea();
+        field2 = new JTextField("privet");
+        label = new JLabel();
         button1 = new JButton("Добавить");
         button2 = new JButton("Найти");
         button3 = new JButton("Выход");
+        treeMap = new TreeMap<Integer, String>();
+        metod = new Metod();
 
         field1.setBounds(10,10,300,500);
         field2.setBounds(350,10,400,50);
@@ -40,7 +46,9 @@ public class MyPanel extends JPanel{
         field2.setVisible(true);
         label.setVisible(true);
         button1.setVisible(true);
+        button1.addActionListener(new ButtonListener(this,metod));
         button2.setVisible(true);
+        button2.addActionListener(new ButtonListener(this,metod));
         button3.setVisible(true);
 
         add(field1);

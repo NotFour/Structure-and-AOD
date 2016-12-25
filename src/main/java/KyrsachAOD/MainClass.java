@@ -1,13 +1,14 @@
 package KyrsachAOD;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class MainClass {
     public static void main(String[] args) throws IOException {
         /**
          * Размер массивов
          * */
-        final int size = 20;
+        final int size = 1000;
         /**
          * Массив счетчик для всех массивов
          * countMassives[0]-идеальный массив
@@ -30,31 +31,13 @@ public class MainClass {
          * Массив вероятностей
          * */
         double[] arrayChances = new double[size];
-        arrayChances[0] = 1.1;
-        arrayChances[1] = 0.87;
-        arrayChances[2] = 8.93;
-        arrayChances[3] = 7.8;
-        arrayChances[4] = 3.15;
-        arrayChances[5] = 5.6;
-        arrayChances[6] = 4.81;
-        arrayChances[7] = 8.6;
-        arrayChances[8] = 5.01;
-        arrayChances[9] = 3.3;
-        arrayChances[10] = 4.17;
-        arrayChances[11] = 6.34;
-        arrayChances[12] = 5.43;
-        arrayChances[13] = 3.4;
-        arrayChances[14] = 10.6;
-        arrayChances[15] = 5.3;
-        arrayChances[16] = 7.14;
-        arrayChances[17] = 5.1;
-        arrayChances[18] = 1.15;
-        arrayChances[19] = 2.2;
-
-        for(int i=0;i<arrayChances.length;i++){
-            System.out.print(arrayChances[i]+" ");
+        Random rand = new Random();
+        for (int i = 0; i < arrayChances.length; i++) {
+            arrayChances[i] = rand.nextDouble();
         }
-        System.out.println("");
+        //сделать случайные вероятности, но высчитывать отношения
+        //от 1 до тысячи например
+
         /**
          * Идеальный массив
          * */
@@ -90,15 +73,15 @@ public class MainClass {
         int transIndex;//сюда сохраняем индекс найденного элемента
         int startIndex;//сюда сохраняем индекс найденного элемента
         int mixIndex;//сюда сохраняем индекс найденного элемента
-
-        for (int y = 0; y < 20; y++) {
+        number = ChoiceNumber.choice(arrayNumbers, arrayChances);
+        for (int y = 0; y < 40; y++) {
             for (int i = 0; i < 100; i++) {
-                number = ChoiceNumber.choice(arrayNumbers, arrayChances);
+                //number = ChoiceNumber.choice(arrayNumbers, arrayChances);
 
                 countMassives[0] += Massives.findNotOptimalArray(idealNumbers, number) + 1;
 
                 transIndex = Massives.findNotOptimalArray(transNumbers, number);
-                countMassives[1] += transIndex+1;
+                countMassives[1] += transIndex + 1;
                 transNumbers = Massives.methodTrans(transNumbers, transIndex);
 
                 startIndex = Massives.findNotOptimalArray(startNumbers, number);
@@ -107,14 +90,14 @@ public class MainClass {
 
                 mixIndex = Massives.findNotOptimalArray(mixNumbers, number);
                 countMassives[3] += mixIndex + 1;
-                if(0==y){
-                    mixNumbers = Massives.methodStart(mixNumbers,mixIndex);
-                }else{
-                    mixNumbers = Massives.methodTrans(mixNumbers,mixIndex);
+                if (0 == y) {
+                    mixNumbers = Massives.methodStart(mixNumbers, mixIndex);
+                } else {
+                    mixNumbers = Massives.methodTrans(mixNumbers, mixIndex);
                 }
             }
             for (int i = 0; i < countMassives.length; i++) {
-                System.out.print((double) countMassives[i] / 100 + " ");
+                System.out.print((double) countMassives[i] / 10 + " ");
                 countMassives[i] = 0;
             }
             System.out.println("");

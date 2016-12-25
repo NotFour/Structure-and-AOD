@@ -11,7 +11,7 @@ public class Panelka extends JPanel {
     JButton button6;
     JButton button7;
 
-    public Panelka(){
+    public Panelka() {
         button1 = new JButton("Обмен");
         button2 = new JButton("");
         button2 = new JButton("Выбор");
@@ -21,13 +21,13 @@ public class Panelka extends JPanel {
         button6 = new JButton("Характеристики");
         button7 = new JButton("Сортировать");
 
-        button1.setBounds(0,0,320,50);
-        button2.setBounds(0,320,320,50);
-        button3.setBounds(0,640,320,50);
-        button4.setBounds(0,960,320,50);
-        button5.setBounds(0,1280,320,50);
-        button6.setBounds(0,1600,320,50);
-        button7.setBounds(0,840,840,50);
+        button1.setBounds(0, 0, 320, 50);
+        button2.setBounds(0, 320, 320, 50);
+        button3.setBounds(0, 640, 320, 50);
+        button4.setBounds(0, 960, 320, 50);
+        button5.setBounds(0, 1280, 320, 50);
+        button6.setBounds(0, 1600, 320, 50);
+        button7.setBounds(0, 840, 840, 50);
 
         button1.setVisible(true);
         button2.setVisible(true);
@@ -43,7 +43,7 @@ public class Panelka extends JPanel {
         add(button4);
         add(button5);
         add(button6);
-        add(button7 );
+        add(button7);
 
     }
 }

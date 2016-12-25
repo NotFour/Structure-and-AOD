@@ -19,7 +19,7 @@ public class Arrays extends laba1.Arrays {
         return new Structure(System.nanoTime() - startTime, -1);
     }
 
-    /*public static Structure binaryOptimal(int value) {
+    public static Structure binaryOptimalNII(int value) {
         int left = 0;
         int right = orderedArray.length - 1;
         int i = 0;
@@ -37,20 +37,20 @@ public class Arrays extends laba1.Arrays {
         } else {
             return new Structure(System.nanoTime() - startTime, -1);
         }
-    }*/
+    }
 
     /**
      * Оптимальный бинарный с рекурсией.
-     * */
+     */
     public static Structure binaryOptimal(int val) {
-        long timeStart=System.nanoTime();
-        return new Structure(System.nanoTime()-timeStart,binaryOptimal(val, 0, orderedArray.length-1));
+        long timeStart = System.nanoTime();
+        return new Structure(System.nanoTime() - timeStart, binaryOptimal(val, 0, orderedArray.length - 1));
     }
 
     private static int binaryOptimal(int value, int left, int right) {
         if (left > right) return -1;
 
-        int mid = left + (right - left) / 2;
+        int mid = (left + right) / 2;
 
         if (value < orderedArray[mid]) {
             return binaryOptimal(value, left, mid - 1);

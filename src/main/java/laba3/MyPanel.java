@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class MyPanel extends JPanel {
+        final int count=1000;
         JButton button1;
         JButton button2;
         JButton button3;
@@ -81,7 +82,7 @@ public class MyPanel extends JPanel {
             field5.setVisible(true);
             field6.setVisible(true);
 
-            label4.setText("Количество сравниний");
+            label4.setText("Количество сравнений");
             label6.setText("Метод деления");
             label7.setText("Метод середины квадратов");
             label8.setText("Метод свертывания");
@@ -92,7 +93,7 @@ public class MyPanel extends JPanel {
             button2.setText("СРАВНИТЬ");
             button3.setText("ВЫХОД");
             Random random = new Random();
-            spinner1.setValue(random.nextInt(50000));
+            spinner1.setValue(random.nextInt(count));
 
             label4.setFont(font);
             label6.setFont(font);

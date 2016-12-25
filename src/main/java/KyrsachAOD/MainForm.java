@@ -1,12 +1,13 @@
-package laba3;
+package KyrsachAOD;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainForm {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setSize(623,607);
         MyPanel panel = new MyPanel();
+        frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.add(panel);
         frame.setVisible(true);
     }
